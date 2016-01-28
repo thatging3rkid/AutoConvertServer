@@ -1,0 +1,1 @@
+Put a VLC (tested on 2.2.1) installation here, vlc accessible by %cd%\AutoConvertServer\vlc\vlc.exe.

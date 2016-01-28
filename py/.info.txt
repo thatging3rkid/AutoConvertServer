@@ -1,0 +1,1 @@
+Put a Python3 installation here, with py (or pyw) accessible by %cd%\AutoConvertServer\py\py.exe.
