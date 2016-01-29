@@ -5,4 +5,4 @@
 :: pyw.exe makes no cli screen
 :: recommended: pyw.exe
 
-%cd%\py\py.exe AutoConvertServer.py
+%cd%\py\python.exe AutoConvertServer.py
