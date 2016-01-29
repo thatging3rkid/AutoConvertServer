@@ -18,7 +18,7 @@ cd = os.getcwd()
 # Main function
 def main():
 	if (len(inputDir) == 0):
-		time.sleep(1)
+		time.sleep(60)
 		print("sleeping")
 	else:
 		s = threading.Semaphore(numThreads)
@@ -45,6 +45,6 @@ def convertThread(index , s):
 		os.system("move " + inFile + " " + outFileSc)
 	pass
 
-inputDir = os.listdir("" + os.getcwd() + "\\input")
-main()
-#make infinite loop in final revision
+while True:
+	inputDir = os.listdir("" + os.getcwd() + "\\input")
+	main()
