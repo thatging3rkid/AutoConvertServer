@@ -4,4 +4,4 @@ A Python script that encodes a music file to another format. This differs from A
 
 # Important
 
-VLC must be set to **not** repeat mode for this to work, if not it goes into an infinite loop. I am looking into a solution.
+VLC must be set to **not** repeat mode for this to work, if not, VLC infinitely converts the same file. I am looking into a solution.
