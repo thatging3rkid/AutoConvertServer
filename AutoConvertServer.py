@@ -1,10 +1,14 @@
-# AutoConvertServer v0.1
+# AutoConvertServer v0.2
 # By: thatging3rkid
 
 import os
 import time
+import logging
 import threading
 import subprocess
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='(%(threadName)-9s) %(message)s',)
 
 # Some global pre-defs
 global threads
@@ -18,8 +22,8 @@ cd = os.getcwd()
 # Main function
 def main():
 	if (len(inputDir) == 0):
-		time.sleep(60)
-		print("sleeping")
+		logging.debug("sleeping")
+		time.sleep(15)
 	else:
 		s = threading.Semaphore(numThreads)
 		for dirCount in range(len(inputDir)):
@@ -27,13 +31,11 @@ def main():
 			threads.append(t)
 			t.start()
 				
-
-
 # Function that is threaded that makes the VLC call
 def convertThread(index , s):
-	print("in queue")
+	logging.debug("in queue")
 	with s:
-		print("starting")			
+		logging.debug("starting")			
 		currentFile = inputDir[index]
 		newFile =  currentFile[0: -4] + ".mp3"
 		inFile = "\"" + cd + "\\input\\" + currentFile + "\""
@@ -41,10 +43,12 @@ def convertThread(index , s):
 		outFileSc = "\"" + cd + "\\output\\source\\" + currentFile + "\""
 		callSuccess = subprocess.call("" + vlcDir + "vlc.exe --play-and-exit -I dummy --dummy-quiet " + inFile + " --sout=#transcode{" + \
 			"acodec=mp3,vcodec=dummy}:standard{access=file,mux=raw,dst=" + outFileMP + "}")
-		print("in thread")
+		logging.debug("in thread")
 		os.system("move " + inFile + " " + outFileSc)
-	pass
+	pass				
 
-while True:
-	inputDir = os.listdir("" + os.getcwd() + "\\input")
-	main()
+
+inputDir = os.listdir("" + os.getcwd() + "\\input")
+
+main()
+#make infinite loop in final revision

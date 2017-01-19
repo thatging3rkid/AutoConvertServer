@@ -1,0 +1,6 @@
+py/*
+vlc/*
+/input/
+/output/
+!py/.info.txt
+!vlc/.info.txt
